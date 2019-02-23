@@ -1,12 +1,34 @@
-<ul class="list-group">
-  <li [ngClass]="{'list-group-item': true,
+<li [ngClass]="{'list-group-item': true,
                   'list-group-item-success':appareilStatus==='allumé',
                   'list-group-item-danger':appareilStatus==='éteint'}">
-    <div style="width:20px;height:20px;background-color:red;"
-         *ngIf="appareilStatus === 'éteint'"></div>
-    <h4 [ngStyle]="{color: getColor()}">Appareil : {{appareilName}}</h4>
-    <h5>Statut : {{getStatus()}}</h5>
-    <input type="text" class="form-control" [(ngModel)]="appareilName">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
 
-  </li>
-</ul>
+        <div style="width:20px;height:20px;background-color:red;"
+             *ngIf="appareilStatus === 'éteint'"></div>
+        <h4 [ngStyle]="{color: getColor()}">Appareil : {{appareilName}}</h4>
+        <h5>Statut : {{getStatus()}}</h5>
+      </div>
+      <div class="col-md-6">
+        <table height="100%" class="align-bottom">
+          <tr>
+            <td>
+              <button type="button" class="btn btn-success" [disabled]="appareilStatus === 'allumé'" (click)="onAllumer()">
+                Allumer
+              </button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-danger" [disabled]="appareilStatus === 'éteint'" (click)="onEteindre()">
+                Eteindre
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <input type="text" class="form-control" [(ngModel)]="appareilName">
+    </div>
+  </div>
+</li>

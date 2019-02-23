@@ -4,15 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TestComponentComponent } from './test-component/test-component.component';
 import { AppareilComponent } from './appareil/appareil.component';
 import { AppareilService } from './services/appareil.service';
+import { AuthComponent } from './auth/auth.component';
+import { AppareilViewComponent } from './appareil-view/appareil-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponentComponent,
-    AppareilComponent
+    AppareilComponent,
+    AuthComponent,
+    AppareilViewComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +22,7 @@ import { AppareilService } from './services/appareil.service';
     AppRoutingModule
   ],
   providers: [
-    AppareilService 
+    AppareilService
 ],
   bootstrap: [AppComponent]
 })

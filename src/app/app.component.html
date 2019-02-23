@@ -4,8 +4,9 @@
       <h2>Mes appareils</h2>
       <h3>Last update : {{lastUpdate | async | date: 'EEEE d MMMM y'}}</h3>
       <ul class="list-group">
-        <app-appareil *ngFor="let appareil of appareils"
+        <app-appareil *ngFor="let appareil of appareils; let i = index;"
                       [appareilName]="appareil.name"
+                      [indexOfAppareil]="i"
                       [appareilStatus]="appareil.status"></app-appareil>
       </ul>
       <button type="button" class="btn btn-success" [disabled]="!isAuth" (click)="onToutAllumer()">
