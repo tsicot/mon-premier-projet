@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <form (ngSubmit)="onSubmitForm()" [formGroup]="userForm">
+      <div class="form-group">
+        <label for="firstName">
+          Prénom
+        </label>
+        <input class="form-control" formControlName="firstName" id="firstName" type="text">
+      </div>
+      <div class="form-group">
+        <label for="lastName">
+          Nom
+        </label>
+        <input class="form-control" formControlName="lastName" id="lastName" type="text">
+      </div>
+      <div class="form-group">
+        <label for="email">
+          Email
+        </label>
+        <input class="form-control" formControlName="email" id="email" type="text">
+      </div>
+      <div class="form-group">
+        <label for="drinkPreference">
+          Quelle boisson préférez-vous ?
+        </label>
+        <select class="form-control" formControlName="drinkPreference" id="status">
+          <option value="coca">Coca</option>
+          <option value="pepsi">Pepsi</option>
+        </select>
+      </div>
+      <div formArrayName="hobbies">
+        <h3>Vos hobbies</h3>
+        <div *ngFor="let hobbyControl of getHobbies().controls; let i = index;" class="form-group">
+          <input [formControlName]="i" class="form-control" type="text">
+        </div>
+        <button (click)="onAddHobby()" class="btn btn-success" type="button">Ajouter un hobby</button>
+      </div>
+      <button [disabled]="userForm.invalid" class="btn btn-primary" type="submit">Soumettre</button>
+    </form>
+  </div>
+</div>
