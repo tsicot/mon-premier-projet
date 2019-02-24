@@ -1,20 +1,18 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <h2>Mes appareils</h2>
-      <h3>Last update : {{lastUpdate | async | date: 'EEEE d MMMM y'}}</h3>
-      <ul class="list-group">
-        <app-appareil *ngFor="let appareil of appareils; let i = index;"
-                      [appareilName]="appareil.name"
-                      [indexOfAppareil]="i"
-                      [appareilStatus]="appareil.status"></app-appareil>
-      </ul>
-      <button type="button" class="btn btn-success" [disabled]="!isAuth" (click)="onToutAllumer()">
-        Tout allumer
-      </button>
-      <button type="button" class="btn btn-danger" [disabled]="!isAuth" (click)="onToutEteindre()">
-        Tout éteindre
-      </button>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li routerLinkActive="active"><a routerLink="auth">Authentication</a></li>
+      <li routerLinkActive="active"><a routerLink="appareils">Appareils</a></li>
+    </ul>
+    <div class="navbar-right">
+      <p>Vous êtes connectés depuis {{secondes}} secondes.</p>
     </div>
   </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <router-outlet></router-outlet>
+  </div>
 </div>
+

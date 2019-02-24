@@ -1,34 +1,39 @@
 <li [ngClass]="{'list-group-item': true,
                   'list-group-item-success':appareilStatus==='allumé',
                   'list-group-item-danger':appareilStatus==='éteint'}">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
+  <div class="row">
+    <div class="col-md-6">
 
-        <div style="width:20px;height:20px;background-color:red;"
-             *ngIf="appareilStatus === 'éteint'"></div>
-        <h4 [ngStyle]="{color: getColor()}">Appareil : {{appareilName}}</h4>
-        <h5>Statut : {{getStatus()}}</h5>
-      </div>
-      <div class="col-md-6">
-        <table height="100%" class="align-bottom">
-          <tr>
-            <td>
-              <button type="button" class="btn btn-success" [disabled]="appareilStatus === 'allumé'" (click)="onAllumer()">
-                Allumer
-              </button>
-            </td>
-            <td>
-              <button type="button" class="btn btn-danger" [disabled]="appareilStatus === 'éteint'" (click)="onEteindre()">
-                Eteindre
-              </button>
-            </td>
-          </tr>
-        </table>
-      </div>
+      <div *ngIf="appareilStatus === 'éteint'"
+           style="width:20px;height:20px;background-color:red;"></div>
+      <h4 [ngStyle]="{color: getColor()}">Appareil : {{appareilName}}</h4>
+      <h5>Statut : {{getStatus()}}</h5>
     </div>
-    <div class="row">
-      <input type="text" class="form-control" [(ngModel)]="appareilName">
+    <div class="col-md-6">
+      <table class="align-bottom" height="100%">
+        <tr>
+          <td>
+            <button (click)="onAllumer()" [disabled]="appareilStatus === 'allumé'" class="btn btn-success"
+                    type="button">
+              Allumer
+            </button>
+          </td>
+          <td>
+            <button (click)="onEteindre()" [disabled]="appareilStatus === 'éteint'" class="btn btn-danger"
+                    type="button">
+              Eteindre
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <input [(ngModel)]="appareilName" class="form-control px-3" type="text">
+    </div>
+    <div class="col-md-6">
+      <a [routerLink]="[id]">Détails</a>
     </div>
   </div>
 </li>
